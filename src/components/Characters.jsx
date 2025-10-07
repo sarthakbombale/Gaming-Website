@@ -68,24 +68,16 @@ const Characters = () => {
     <div className="relative w-full min-h-screen overflow-auto mb-[10%]">
       <CustomCursor isHovering3D={cursorInModeArea} />
 
-      {/* Title */}
       <div className="relative z-10 pt-6 text-center">
-        <h1
-          className="text-5xl font-bold tracking-widest mb-8"
-          style={{ textShadow: "0 0 10px rgba(255,255,255,0.7)" }}
-        >
+        <h1 className="text-5xl font-bold tracking-widest mb-8" style={{ textShadow: "0 0 10px rgba(255,255,255,0.7)" }}>
           FIGHTERS
         </h1>
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col md:flex-row items-start w-full h-full p-4 gap-6">
-        {/* Left Side - Character Info */}
+      <div className="relative z-10 flex flex-col md:flex-row items-center w-full h-full p-4 gap-6">
         <div className="w-full md:w-1/2 flex flex-col md:ml-10">
-          {/* Info Card */}
           <div className="bg-gray-900/80 backdrop-blur-sm rounded-lg p-4 mb-4 border border-gray-800 shadow-[0_0_15px_rgba(167,139,250,0.2)]">
             <h1 className="text-2xl font-semibold mb-2">{currentAvatar.name}</h1>
-
             <div className="space-y-3 mb-8">
               {["power", "stable", "penetrate", "portable"].map((stat) => (
                 <div key={stat} className="flex items-center">
@@ -100,18 +92,12 @@ const Characters = () => {
                 </div>
               ))}
             </div>
-
             <div className="flex gap-3">
-              <button className="px-4 py-1 bg-violet-900 text-white rounded-md font-semibold hover:opacity-70 transition-all duration-300">
-                Proficient
-              </button>
-              <button className="px-4 py-1 bg-violet-900 text-white rounded-md font-semibold hover:opacity-70 transition-all duration-300">
-                Redemption
-              </button>
+              <button className="px-4 py-1 bg-violet-900 text-white rounded-md font-semibold hover:opacity-70 transition-all duration-300">Proficient</button>
+              <button className="px-4 py-1 bg-violet-900 text-white rounded-md font-semibold hover:opacity-70 transition-all duration-300">Redemption</button>
             </div>
           </div>
 
-          {/* Avatar Cards */}
           <div className="grid grid-cols-2 gap-4">
             {Object.keys(Avatar).map((key) => {
               const avatar = Avatar[key];
@@ -123,27 +109,20 @@ const Characters = () => {
                 >
                   <div className="text-lg mb-2">{avatar.name}</div>
                   <div className="w-20 h-20 bg-gray-800/50 rounded-md flex items-center justify-center mb-2">
-                    <img
-                      src={avatar.img}
-                      alt={`${avatar.name}-IMG`}
-                      className="max-w-full max-h-full object-contain"
-                    />
+                    <img src={avatar.img} alt={`${avatar.name}-IMG`} className="max-w-full max-h-full object-contain" />
                   </div>
                   <div className="flex">
                     {[...Array(avatar.stars)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-violet-400 text-violet-500" />
                     ))}
                   </div>
-                  {selectedAvatar === key && (
-                    <div className="absolute inset-0 border-2 border-violet-400 rounded-lg pointer-events-none"></div>
-                  )}
+                  {selectedAvatar === key && <div className="absolute inset-0 border-2 border-violet-400 rounded-lg pointer-events-none"></div>}
                 </div>
               );
             })}
           </div>
         </div>
 
-        {/* Right Side - 3D Preview */}
         <div
           className="relative md:w-1/2 w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-visible"
           onMouseEnter={() => setCursorInModeArea(true)}
